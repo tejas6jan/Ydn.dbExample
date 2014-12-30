@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../jquery.mobile-1.4.5.min.css">
@@ -37,18 +38,8 @@
 .ui-corner-all{
 }
 </style>
-<script type="text/javascript">
-	$(function () {
-		$('.footable').footable({
-    breakpoints: {
-        tiny: 100,
-        medium: 555,
-        big: 2048
-    }
-});
-	});
-	
-</script>
+
+
 </head>
 <body>
 
@@ -59,10 +50,11 @@
 
 <div data-role="header" height="10%" style="background-color:#0faafa" >
 <div data-role="navbar">
+		
 		<ul>
-		<li><a href="#Add" data-transition="slide" class=""ui- id="New">New</a></li>
-		<li><a href="#showEntries"  id="Show">Show</a></li>
-		</ul>
+		<li><a href="#Add" class="ui-btn-active ui-state-persist">+New</a></li>
+		<li><a href="#showEntries" onclick="show()">Show</a></li>
+	</ul>
 </div>
 </div>
 			  <div data-role="main" class="ui-content">
@@ -90,26 +82,23 @@
 			<label> Description</label>
 			<textarea  data-inline="true"  placeholder="Describe the expense briefly" id="txtDesc"></textarea>
 			</form>
-			<input type="button" id="submit" value="Ok" onclick="add();" data-inline="true"/>
-			<input type="button" id="submit" value="Delete All" onclick="removeAll();" data-inline="true" />
+			<input type="button" id="submit" value="Save the expense" onclick="add();" data-inline="true"/>
+			
 			 <script src="storage.js"></script>
 			
 			</div><br />
 			<div data-role="footer">
-			
+				
 			</div>
 			
 	</div>
-	<script>
-	show();
-	</script>
+	
 	<div data-role="page" id="showEntries" >
-		
 		<div data-role="header" height="10%" style="background-color:#0faafa" >
 		<div data-role="navbar">
 		<ul>
-		<li><a href="#Add"  id="New">New</a></li>
-		<li><a href="#showEntries"  id="Show">Show</a></li>
+		<li><a href="#Add" >+New</a></li>
+		<li><a href="#showEntries" onclick="show()" class="ui-btn-active ui-state-persist"n>Show</a></li>
 		</ul>
 		</div>
 		</div>
@@ -130,6 +119,8 @@
 		</div>	
 		
 	</div>
-	
+	<script type="text/javascript">
+	show();
+</script>
 </body>
 </html>
