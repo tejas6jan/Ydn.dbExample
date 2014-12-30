@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet"	href="footable.css">
+<script src="../jquery-1.11.1.min.js"></script>
+
+<script src="../jquery.mobile-1.4.5.min.js"></script>
+ <script type="text/javascript" src="ydn.db-dev.js"></script>
+<script type="text/javascript" src="footable.js"></script>
+ </script>
+<style>
+/* Custom indentations are needed because the length of custom labels differs from
+   the length of the standard labels */
+.custom-size-flipswitch.ui-flipswitch .ui-btn.ui-flipswitch-on {
+    text-indent: -5.9em;
+}
+.custom-size-flipswitch.ui-flipswitch .ui-flipswitch-off {
+    text-indent: 0.5em;
+}
+/* Custom widths are needed because the length of custom labels differs from
+   the length of the standard labels */
+.custom-size-flipswitch.ui-flipswitch {
+    width: 8.875em;
+}
+.custom-size-flipswitch.ui-flipswitch.ui-flipswitch-active {
+       padding-left: 7em;
+    width: 1.875em;
+}
+@media (min-width: 28em) {
+    // Repeated from rule .ui-flipswitch above
+    .ui-field-contain > label + .custom-size-flipswitch.ui-flipswitch {
+        width: 1.875em;
+    }
+}
+.ui-corner-all{
+}
+</style>
+<script type="text/javascript">
+	$(function () {
+		$('.footable').footable({
+    breakpoints: {
+        tiny: 100,
+        medium: 555,
+        big: 2048
+    }
+});
+	});
+	
+</script>
+</head>
+<body>
+
+
+
+
+<div data-role="page" id="Add">
+
+<div data-role="header" height="10%" style="background-color:#0faafa" >
+<div data-role="navbar">
+		<ul>
+		<li><a href="#Add" data-transition="slide" class=""ui- id="New">New</a></li>
+		<li><a href="#showEntries"  id="Show">Show</a></li>
+		</ul>
+</div>
+</div>
+			  <div data-role="main" class="ui-content">
+
+			  <form >
+			<label for="txtPrice" ><em>Price</em></label>
+			<input type="text" id="txtPrice" data-inline="true" name="txtPrice" placeholder="Enter the Amount">
+			
+			<label>Payment Mode </label>
+			<select id="txtPMode" data-inline="true">
+			<option value="net banking">Net Banking</option>
+			<option value="credit card">Credit Card</option>
+			<option value="debit card">Debit card</option>
+			<option value="cash">Cash</option>
+			</select>
+			<Label id="status" data-inline="true">Status</label>
+			
+			<select  data-role="flipswitch"  id="chkStatus"  data-wrapper-class="custom-size-flipswitch" data-inline="true">
+			<option value="paid">Paid</option>
+			<option value="unpaid">Unpaid</option>
+			</select>
+			
+			<label> Date</label><input type="date" data-inline="true" id="txtDate" data-role="datebox">
+
+			<label> Description</label>
+			<textarea  data-inline="true"  placeholder="Describe the expense briefly" id="txtDesc"></textarea>
+			</form>
+			<input type="button" id="submit" value="Ok" onclick="add();" data-inline="true"/>
+			<input type="button" id="submit" value="Delete All" onclick="removeAll();" data-inline="true" />
+			 <script src="storage.js"></script>
+			
+			</div><br />
+			<div data-role="footer">
+			
+			</div>
+			
+	</div>
+	<script>
+	show();
+	</script>
+	<div data-role="page" id="showEntries" >
+		
+		<div data-role="header" height="10%" style="background-color:#0faafa" >
+		<div data-role="navbar">
+		<ul>
+		<li><a href="#Add"  id="New">New</a></li>
+		<li><a href="#showEntries"  id="Show">Show</a></li>
+		</ul>
+		</div>
+		</div>
+		<div data-role="main" >
+			<table id="tbl" >
+			<thead>
+			<th>Price</th>
+			<th>Mode</th>
+			<th>Date</th>
+			<th>Description</th>
+			<th>Status</th>
+			
+			</thead>
+			<tbody id="tbody">
+			</tbody>
+			</table>
+		</div>
+		</div>	
+		
+	</div>
+	
+</body>
+</html>
